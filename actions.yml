@@ -1,0 +1,5 @@
+name: aws-actions-cheats
+description: Utility functions 4 interacting with AWS from an Actions pipeline
+runs:
+  using: 'node12'
+  main: 'index.js'
