@@ -9,7 +9,7 @@ const files = [
 
 exec(
   "cd /usr/local/bin\n" +
-  `curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{${files}}\n` +
+  `sudo curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{${files}}\n` +
   "chmod +x /usr/local/bin/s3*\n" +
   "cd $HOME && s3_url -h",
   function (err) {
