@@ -1,8 +1,8 @@
 # aws-actions-cheats
 
-[![ci](https://github.com/chiefbiiko/aws-actions-cheats/workflows/ci/badge.svg)](https://github.com/chiefbiiko/aws-actions-cheats/blob/master/.github/workflows/ci.yml)
+[![ci](https://github.com/chiefbiiko/aws-actions-cheats/workflows/ci/badge.svg)](https://github.com/chiefbiiko/aws-actions-cheats/actions?query=workflow%3Aci)
 
-`bash` utils 4 interacting with aws from actions pipelines
+![bash](https://badges.frapsoft.com/bash/v1/bash.png?v=103) utils 4 interacting with aws from actions pipelines
 
 please pull request if u have anything 2 add
 
@@ -14,7 +14,7 @@ then call the cheats in subsequent steps
 
 ``` yml
 steps:
-  - uses: chiefbiiko/aws-actions-cheats@v0.1.1
+  - uses: chiefbiiko/aws-actions-cheats@v0.1.2
   - run: yo_s3_url=$(s3_url bucket k/e/y)
     # => https://bucket.s3.amazonaws.com/k/e/y
 ```
