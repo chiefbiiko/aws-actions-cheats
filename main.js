@@ -1,7 +1,8 @@
 const exec =  require("child_process").exec;
 
 exec(
-  "source $GITHUB_WORKSPACE/cheats.sh",
+  "curl -fSL# https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats.sh -o /tmp/cheats.sh\n" +
+  "source /tmp/cheats.sh",
   { shell: "/bin/bash" },
   function (err) {
     if (err) {
