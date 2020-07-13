@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "npx @zeit/ncc@0.22.3 build ./index.js"
+  },
   "dependencies": {
     "@actions/core": "1.2.4",
     "@actions/exec": "1.0.4"

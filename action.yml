@@ -1,8 +1,8 @@
 name: aws-actions-cheats
-description: Utility functions 4 interacting with AWS from an Actions pipeline
+description: utility functions 4 interacting with aws from an actions pipeline
 runs:
   using: node12
-  main: main.js
+  main: dist/index.js
 author: Noah Anabiik Schwarz - github.com/chiefbiiko
 branding:
   icon: cloud
