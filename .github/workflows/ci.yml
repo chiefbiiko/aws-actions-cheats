@@ -15,5 +15,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     steps:
       - uses: actions/checkout@v2.3.1
-      - uses: ./
-      - run: printf "$(s3_url test-bucket test-key)\n"
+      - name: running aws-actions-cheats
+        uses: ./
+      - name: verifying installation of aws-actions-cheats
+        run: printf "%s\n" "$(s3_url test-bucket test-key)"
