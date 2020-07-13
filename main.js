@@ -10,11 +10,11 @@ const files = [
 const commas = files.join(",");
 
 const chmodx = files.map(function (file) {
-  return "chmod +x /usr/local/bin/" + file;
+  return "chmod +x /usr/bin/" + file;
 }).join(" && ");
 
 exec(
-  "sudo sh -c 'cd /usr/local/bin && " +
+  "sudo sh -c 'cd /usr/bin && " +
   "curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{" + commas + "} && " +
   chmodx +
   " && cd $HOME && s3_url -h'",
