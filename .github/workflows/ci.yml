@@ -18,4 +18,6 @@ jobs:
       - name: running aws-actions-cheats
         uses: ./
       - name: verifying installation of aws-actions-cheats
-        run: printf "%s\n" "$(s3_url test-bucket test-key)"
+        run: |
+          yo_url="$(s3_url test-bucket test-key)"
+          echo $yo_url
