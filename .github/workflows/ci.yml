@@ -13,10 +13,5 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: chiefbiiko/aws-actions-cheats@master
-      - run: |
-          ls /usr/local/bin | grep s3
-          echo "$PATH"
-      - run: |
-          s3_url test-bucket test-key
-          s3_uri test-bucket test-key
+      - uses: chiefbiiko/aws-actions-cheats@${{ env.GITHUB_SHA }}
+      - run: printf "$(s3_url test-bucket test-key)\n"

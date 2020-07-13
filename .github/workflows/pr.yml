@@ -17,6 +17,4 @@ jobs:
       - run: npm audit
       - run: npm ci
       - run: node ./main.js # running aws-actions-cheats
-      - run: |
-          s3_url test-bucket test-key
-          s3_uri test-bucket test-key
+      - run: printf "$(s3_url test-bucket test-key)\n"
