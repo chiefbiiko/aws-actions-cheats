@@ -29,7 +29,7 @@ check for existence of an owned s3 bucket
 
 in case the bucket does not belong to your account `s3_bucket_exists` reports a negative
 
-requires: s3:HeadBucket 
+*requires: s3:HeadBucket*
 
 **example**
 
