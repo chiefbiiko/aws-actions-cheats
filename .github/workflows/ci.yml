@@ -11,9 +11,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest] #, macos-latest]
     steps:
       - uses: chiefbiiko/aws-actions-cheats@master
+      - run: ls /usr/bin | grep s3
       - run: |
           s3_url test-bucket test-key
           s3_uri test-bucket test-key
