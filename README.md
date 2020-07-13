@@ -2,32 +2,28 @@
 
 [![ci](https://github.com/chiefbiiko/aws-actions-cheats/workflows/ci/badge.svg)](https://github.com/chiefbiiko/aws-actions-cheats/blob/master/.github/workflows/ci.yml)
 
-utility `bash` functions 4 interacting with aws from an actions pipeline
+`bash` utils 4 interacting with aws from actions pipelines
 
-`aws-actions-cheats` should encompass common cli operations that can not be done with the `aws-cli` in a simple manner, i.e. on one line.
-
-please pull request to add more utils!
+please pull request if u have anything 2 add
 
 ## usage
 
 simply use `aws-actions-cheats` as a step in your workflow
 
-then, use the `bash` utility functions in subsequent steps
+then call the cheats in subsequent steps
 
 ``` yml
 steps:
-  - uses: chiefbiiko/aws-actions-cheats
+  - uses: chiefbiiko/aws-actions-cheats@v0.1.1
   - run: yo_s3_url=$(s3_url bucket k/e/y)
     # => https://bucket.s3.amazonaws.com/k/e/y
 ```
 
-# commands
+## commands
 
 #### `s3_bucket_exists $bucket_name`
 
 check for existence of an owned s3 bucket
-
-in case the bucket does not belong to your account `s3_bucket_exists` reports a negative
 
 *requires: s3:HeadBucket*
 
@@ -39,17 +35,45 @@ if s3_bucket_exists yo-bucket; then
 fi
 ```
 
-#### `s3_object_exists`
+#### `s3_object_exists $bucket_name $key`
 
-TODO
+check for existence of an owned s3 object
 
-#### `s3_uri`
+*requires: s3:HeadObject*
 
-TODO
+**example**
 
-#### `s3_url`
+```sh
+if s3_object_exists yo-bucket k/e/y; then
+  printf "object exists\n"
+fi
+```
 
-TODO
+#### `s3_uri $bucket_name [$key]`
+
+format a s3 uri
+
+handles keys with or without leading slash
+
+**example**
+
+```sh
+s3_uri bucket k/e/y
+# => s3://bucket/k/e/y
+```
+
+#### `s3_url $bucket_name [$key]`
+
+format a s3 url
+
+handles keys with or without leading slash
+
+**example**
+
+```sh
+s3_url bucket k/e/y
+# => https://bucket.s3.amazonaws.com/k/e/y
+```
 
 ## license
 
