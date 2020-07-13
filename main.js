@@ -16,8 +16,8 @@ exec(cmd, function (err, stdout, stderr) {
   console.log("$$$ stdout", stdout);
   console.log("$$$ stderr", stderr);
 
-  if (err || stderr) {
-    console.error((err && err.message) || stderr);
+  if (err) {
+    console.error(stderr + "\n" + err.message);
     process.exitCode = 1;
   } else {
     console.log(stdout + "\naws-actions-cheats are now available in your sh");
