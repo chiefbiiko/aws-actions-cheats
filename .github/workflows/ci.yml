@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: chiefbiiko/aws-actions-cheats@master
       - run: |
-        s3_url test-bucket test-key
-        s3_uri test-bucket test-key
+          s3_url test-bucket test-key
+          s3_uri test-bucket test-key
