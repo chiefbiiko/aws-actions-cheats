@@ -1,9 +1,17 @@
 const exec = require("child_process").exec;
 
+const files = [
+  "s3_bucket_exists.sh",
+  "s3_object_exists.sh",
+  "s3_uri.sh",
+  "s3_url.sh",
+].join(",");
+
 exec(
-  "curl -fSL# https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats.sh -o /tmp/cheats.sh\n" +
-  ". /tmp/cheats.sh\n" +
-  "s3_url -h",
+  "cd /usr/local/bin\n" +
+  `curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{${files}}\n` +
+  "chmod +x /usr/local/bin/s3*\n" +
+  "cd $HOME && s3_url -h",
   function (err) {
     if (err) {
       console.error(err.message);
