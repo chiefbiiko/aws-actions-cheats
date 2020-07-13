@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: chiefbiiko/aws-actions-cheats@master
       - run: |
-          ls /usr/bin | grep s3
+          ls /usr/local/bin | grep s3
           echo "$PATH"
       - run: |
           s3_url test-bucket test-key
