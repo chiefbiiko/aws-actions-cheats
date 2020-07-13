@@ -11,8 +11,8 @@ simply use `aws-actions-cheats` as a step in your workflow
 ``` yml
 steps:
   - uses: chiefbiiko/aws-actions-cheats
-    run: s3_url bucket key
-    # => https://bucket.s3.amazonaws.com/key
+  - run: s3_url bucket k/e/y
+    # => https://bucket.s3.amazonaws.com/k/e/y
 ```
 
 ## license
