@@ -1,7 +1,7 @@
 const exec =  require("child_process").exec;
 
 exec(
-  "ls && source $GITHUB_WORKSPACE/aws-actions-cheats/cheats.sh",
+  "source $GITHUB_WORKSPACE/cheats.sh",
   { shell: "/bin/bash" },
   function (err) {
     if (err) {
