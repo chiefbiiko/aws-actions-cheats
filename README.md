@@ -21,6 +21,36 @@ steps:
     # => https://bucket.s3.amazonaws.com/k/e/y
 ```
 
+# commands
+
+#### `s3_bucket_exists $bucket_name`
+
+check for existence of an owned s3 bucket
+
+in case the bucket does not belong to your account `s3_bucket_exists` reports a negative
+
+requires: s3:HeadBucket 
+
+**example**
+
+```sh
+if s3_bucket_exists yo-bucket; then
+  printf "yo-bucket exists\n"
+fi
+```
+
+#### `s3_object_exists`
+
+TODO
+
+#### `s3_uri`
+
+TODO
+
+#### `s3_url`
+
+TODO
+
 ## license
 
 [MIT](./LICENSE)
