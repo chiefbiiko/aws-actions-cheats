@@ -1,7 +1,7 @@
-name: ci
+name: pr
 
 on:
-  push:
+  pull_request:
     branches:
       - master
 
@@ -13,7 +13,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
     steps:
-      - uses: chiefbiiko/aws-actions-cheats@master
+      - uses: actions/checkout@v2.3.1
+      - run: npm audit
+      - run: npm ci
+      - run: node ./main.js # running aws-actions-cheats
       - run: |
         s3_url test-bucket test-key
         s3_uri test-bucket test-key
