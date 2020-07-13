@@ -7,22 +7,15 @@ const files = [
   "s3_url",
 ];
 
-const commas = files.join(",");
-
-const chmodx = files.map(function (file) {
-  return "chmod +x /usr/local/bin/" + file;
-}).join(" && ");
-
 const cmd = "sudo sh -c 'cd /usr/local/bin && " +
   "curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{" +
-  commas + "} && " +
-  chmodx + "'";
+  files.join(",") + "}" + "'";
 
-exec(cmd, function (err) {
-  if (err) {
-    console.error(err.message);
+exec(cmd, function (err, stdout, stderr) {
+  if (err || stderr) {
+    console.error((err && err.message) || stderr);
     process.exitCode = 1;
   } else {
-    console.log("aws-actions-cheats are now available in your sh");
+    console.log(stdout + "\naws-actions-cheats are now available in your sh");
   }
 });
