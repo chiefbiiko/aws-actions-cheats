@@ -14,15 +14,15 @@ const chmodx = files.map(function (file) {
 }).join(" && ");
 
 const cmd = "sudo sh -c 'cd /usr/local/bin && " +
-  "curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{" +
+  "curl -fSL --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{" +
   commas + "} && " +
   chmodx + "'";
 
-exec(cmd, function (err, stdout, stderr) {
+exec(cmd, function (err, _stdout, stderr) {
   if (err) {
     console.error(stderr + "\n" + err.message);
     process.exitCode = 1;
   } else {
-    console.log(stdout + "\naws-actions-cheats are now available in your sh");
+    console.log("aws-actions-cheats installed");
   }
 });
