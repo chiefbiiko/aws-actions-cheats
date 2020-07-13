@@ -12,6 +12,10 @@ const cmd = "sudo sh -c 'cd /usr/local/bin && " +
   files.join(",") + "}" + "'";
 
 exec(cmd, function (err, stdout, stderr) {
+  console.log("$$$ err", err);
+  console.log("$$$ stdout", stdout);
+  console.log("$$$ stderr", stderr);
+
   if (err || stderr) {
     console.error((err && err.message) || stderr);
     process.exitCode = 1;
