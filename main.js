@@ -1,9 +1,9 @@
-const exec =  require("child_process").exec;
+const exec = require("child_process").exec;
 
 exec(
   "curl -fSL# https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats.sh -o /tmp/cheats.sh\n" +
-  "source /tmp/cheats.sh",
-  { shell: "/bin/bash" },
+  ". /tmp/cheats.sh\n" +
+  "declare -F",
   function (err) {
     if (err) {
       console.error(err.message);
