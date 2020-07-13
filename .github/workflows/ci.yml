@@ -1,0 +1,19 @@
+  name: ci
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    name: test aws-actions-cheats on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v2.3.1
+      - run: npm audit
+      - run: npm ci
+      - uses: chiefbiiko/aws-actions-cheats
+        run: s3_url test-bucket test-key
