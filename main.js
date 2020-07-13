@@ -7,15 +7,18 @@ const files = [
   "s3_url",
 ];
 
+const commas = files.join(",");
+
+const chmodx = files.map(function (file) {
+  return "chmod +x /usr/local/bin/" + file;
+}).join(" && ");
+
 const cmd = "sudo sh -c 'cd /usr/local/bin && " +
   "curl -fSL# --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/master/cheats/{" +
-  files.join(",") + "}" + "'";
+  commas + "} && " +
+  chmodx + "'";
 
 exec(cmd, function (err, stdout, stderr) {
-  console.log("$$$ err", err);
-  console.log("$$$ stdout", stdout);
-  console.log("$$$ stderr", stderr);
-
   if (err) {
     console.error(stderr + "\n" + err.message);
     process.exitCode = 1;
