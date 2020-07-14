@@ -75,6 +75,10 @@ s3_url bucket k/e/y
 # => https://bucket.s3.amazonaws.com/k/e/y
 ```
 
+## todo
+
+- cmd cognito_user_confirmed
+
 ## license
 
 [MIT](./LICENSE)
