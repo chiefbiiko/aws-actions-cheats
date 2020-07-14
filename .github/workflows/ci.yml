@@ -33,10 +33,10 @@ jobs:
         run: |
           aws s3 mb s3://${{ env.TEST_BUCKET_NAME }}
           aws s3 cp ./LICENSE s3://${{ env.TEST_BUCKET_NAME }}/LICENSE
-          if [[ ! s3_bucket_exists ${{ env.TEST_BUCKET_NAME }} ]]; then
+          if ! s3_bucket_exists ${{ env.TEST_BUCKET_NAME }}; then
             exit 4
           fi
-          if [[ ! s3_object_exists ${{ env.TEST_BUCKET_NAME }} LICENSE ]]; then
+          if ! s3_object_exists ${{ env.TEST_BUCKET_NAME }} LICENSE; then
             exit 5
           fi
           yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }})"
