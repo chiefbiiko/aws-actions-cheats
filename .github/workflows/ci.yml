@@ -13,13 +13,33 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
+    env:
+      AWS_REGION: us-east-1
+      TEST_BUCKET_NAME: aws-actions-cheats-testbucket
     steps:
       - uses: actions/checkout@v2.3.1
+
       - name: running aws-actions-cheats
         uses: ./
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
       - name: verifying installation of aws-actions-cheats
         run: |
-          yo_url="$(s3_url test-bucket test-key)"
-          if [[ -z ${yo_url// } ]]; then exit 4; fi
-          yo_uri="$(s3_uri test-bucket test-key)"
-          if [[ -z ${yo_uri// } ]]; then exit 5; fi
+          aws s3 mb s3://${{ env.TEST_BUCKET_NAME }}
+          aws s3 cp ./LICENSE s3://${{ env.TEST_BUCKET_NAME }}/LICENSE
+          if [[ ! s3_bucket_exists ${{ env.TEST_BUCKET_NAME }} ]]; then
+            exit 4
+          fi
+          if [[ ! s3_object_exists ${{ env.TEST_BUCKET_NAME }} LICENSE ]]; then
+            exit 5
+          fi
+          yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }})"
+          if [[ -z ${yo_url// } ]]; then exit 6; fi
+          yo_uri="$(s3_uri ${{ env.TEST_BUCKET_NAME }} k/e/y)"
+          if [[ -z ${yo_uri// } ]]; then exit 7; fi

@@ -1,0 +1,40 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Setup for testing aws-actions-cheats
+
+Resources:
+  User:
+    Type: AWS::IAM::User
+    Properties:
+      Policies:
+        - PolicyName: CheatsTestingPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Sid: AllowSomeS3Ops
+                Effect: Allow
+                Action:
+                  - s3:HeadBucket
+                  - s3:HeadObject
+                  - s3:CreateBucket
+                  - s3:PutObject
+                  - s3:GetObject
+                Resource: "*"
+
+  AccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      Status: Active
+      UserName: !Ref User
+
+Outputs:
+  UserArn:
+    Description: IAM user with full access to S3
+    Value: !GetAtt User.Arn
+
+  UserAccessKeyId:
+    Description: Access key id of the IAM user
+    Value: !Ref AccessKey
+
+  UserSecretAccessKey:
+    Description: Secret access key of the IAM user
+    Value: !GetAtt AccessKey.SecretAccessKey
