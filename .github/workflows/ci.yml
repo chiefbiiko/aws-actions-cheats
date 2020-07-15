@@ -41,6 +41,8 @@ jobs:
             exit 5
           fi
           yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }})"
+          echo "yo_url: $yo_url"
           if [[ -z ${yo_url// } ]]; then exit 6; fi
           yo_uri="$(s3_uri ${{ env.TEST_BUCKET_NAME }} k/e/y)"
+          echo "yo_uri: $yo_uri"
           if [[ -z ${yo_uri// } ]]; then exit 7; fi
