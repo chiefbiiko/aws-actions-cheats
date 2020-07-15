@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 s3_uri() {
   # usage: s3_uri $bucket_name [$key]
@@ -6,11 +6,11 @@ s3_uri() {
     printf "usage: s3_uri \$bucket_name [\$key]"
     return 1
   elif [[ "$1" =~ -h|--help ]]; then
-    prtinf "usage: s3_uri \$bucket_name [\$key]"
+    printf "usage: s3_uri \$bucket_name [\$key]"
     return 0
   fi
 
-  if [[ -n "$2" && "$2" == /* ]]; then
+  if [[ -n "$2" ]] && [[ "$2" == /* ]]; then
     key="$2"
   elif [[ -z "${2// }" ]]; then
     key=""

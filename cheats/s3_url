@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 s3_url() {
   # usage: s3_url $bucket_name [$key]
@@ -10,7 +10,7 @@ s3_url() {
     return 0
   fi
 
-  if [[ -n "$2" && "$2" == /* ]]; then
+  if [[ -n "$2" ]] && [[ "$2" == /* ]]; then
     key="$2"
   elif [[ -z "${2// }" ]]; then
     key=""
