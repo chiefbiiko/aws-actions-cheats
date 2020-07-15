@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 s3_uri() {
   # usage: s3_uri $bucket_name [$key]
