@@ -1,6 +1,7 @@
 const exec = require("child_process").exec;
 
 const files = [
+  "cognito_user_exists",
   "s3_bucket_exists",
   "s3_object_exists",
   "s3_uri",

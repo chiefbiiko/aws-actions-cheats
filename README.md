@@ -21,6 +21,22 @@ steps:
 
 ## commands
 
+#### `cognito_user_exists $userpool_id $username`
+
+check for existence of a cognito user
+
+note this func does not check if the user is confirmed
+
+*requires: cognito-idp:AdminGetUser*
+
+**example**
+
+```sh
+if cognito_user_exists us-east-1_abcdefgh alibaba; then
+  printf "user alibaba exists\n"
+fi
+```
+
 #### `s3_bucket_exists $bucket_name`
 
 check for existence of an owned s3 bucket
@@ -77,7 +93,7 @@ s3_url bucket k/e/y
 
 ## todo
 
-- cmd cognito_user_confirmed
+* fix `s3_url` and `s3_uri`
 
 ## license
 

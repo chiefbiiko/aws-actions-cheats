@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cognito_user_exists() {
+  # usage: cognito_user_exists $userpool_id $username
+  # requires: cognito-idp:AdminGetUser
+  if [[ -z "$1" ]] || [[ -z "$2" ]]; then
+    printf "usage: cognito_user_exists \$userpool_id \$username\n"
+    return 1
+  elif [[ "$1" =~ -h|--help ]]; then
+    printf "usage: cognito_user_exists \$userpool_id \$username\n"
+    return 0
+  fi
+  
+  stdall="$( \
+    aws cognito-idp admin-get-user --user-pool-id="$1" --username="$2" 2>&1
+  )"
+
+  exit_code=$?
+  
+  if [[ "$stdall" == *UserNotFoundException* ]]; then
+    return 1
+  elif [[ $exit_code -eq 0 ]]; then
+    return 0
+  else
+    printf "$stdall\n" 1>&2
+    return 1
+  fi
+}
