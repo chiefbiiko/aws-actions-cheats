@@ -41,6 +41,8 @@ jobs:
             exit 5
           fi
           echo "SHELL $SHELL"
+          sub_shell="$(echo "SUB_SHELL $SHELL SUB_PATH $PATH")"
+          echo "$sub_shell"
           yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }} k/e/y)"
           echo "yo_url: $yo_url"
           if [[ -z "${yo_url// }" ]]; then exit 6; fi
