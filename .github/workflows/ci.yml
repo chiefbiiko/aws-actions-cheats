@@ -40,6 +40,7 @@ jobs:
           if ! s3_object_exists ${{ env.TEST_BUCKET_NAME }} LICENSE; then
             exit 5
           fi
+          echo "SHELL $SHELL"
           yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }})"
           echo "yo_url: $yo_url"
           if [[ -z ${yo_url// } ]]; then exit 6; fi

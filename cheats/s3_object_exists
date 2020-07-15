@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 s3_object_exists() {
   # usage: s3_object_exists $bucket_name $key
