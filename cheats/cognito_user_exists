@@ -14,6 +14,8 @@ cognito_user_exists() {
   stdall="$( \
     aws cognito-idp admin-get-user --user-pool-id="$1" --username="$2" 2>&1
   )"
+  
+  echo -e "\$\$\$ DEBUG STDALL $stdall"
 
   exit_code=$?
   
