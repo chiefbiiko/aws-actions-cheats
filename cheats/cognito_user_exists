@@ -15,9 +15,9 @@ cognito_user_exists() {
     aws cognito-idp admin-get-user --user-pool-id="$1" --username="$2" 2>&1
   )"
   
-  echo -e "\$\$\$ DEBUG STDALL $stdall"
-
   exit_code=$?
+
+  # echo -e "\$\$\$ DEBUG STDALL $stdall"
   
   if [[ "$stdall" == *UserNotFoundException* ]]; then
     return 1
