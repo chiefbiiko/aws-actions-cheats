@@ -45,9 +45,9 @@ jobs:
           echo "SHELL $SHELL"
           sub_shell="$(bins="$(ls /bin)";echo "SUB_SHELL $SHELL\nSUB_PATH $PATH\nSUB_BINS\n$bins")"
           echo "$sub_shell"
-          yo_url="$(s3_url ${{ env.TEST_BUCKET_NAME }} k/e/y)"
+          yo_url="$(s3_url some-bucket k/e/y)"
           echo "yo_url: $yo_url"
           if [[ -z "${yo_url// }" ]]; then exit 6; fi
-          yo_uri="$(s3_uri ${{ env.TEST_BUCKET_NAME }} k/e/y)"
+          yo_uri="$(s3_uri some-bucket k/e/y)"
           echo "yo_uri: $yo_uri"
           if [[ -z "${yo_uri// }" ]]; then exit 7; fi

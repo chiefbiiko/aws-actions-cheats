@@ -9,12 +9,17 @@ s3_url() {
     printf "usage: s3_url \$bucket_name [\$key]"
     return 0
   fi
+  
+  echo "[DEBUG] got thru entry ifs"
 
   if [[ -n "$2" ]] && [[ "$2" == /* ]]; then
+    echo "[DEBUG] 1st branch"
     key="$2"
   elif [[ -z "${2// }" ]]; then
+    echo "[DEBUG] 2nd branch"
     key=""
   else
+    echo "[DEBUG] 3rd branch"
     key="/$2"
   fi
 
