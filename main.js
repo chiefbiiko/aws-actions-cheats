@@ -15,7 +15,7 @@ const chmodx = files.map(function (file) {
 }).join(" && ");
 
 const cmd = "sudo sh -c 'cd /bin && " +
-  "curl -fSL --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/" + (process.env.AWS_ACTIONS_CHEATS_VERSION || "v0.1.2") + "/cheats/{" +
+  "curl -fSL --remote-name-all https://raw.githubusercontent.com/chiefbiiko/aws-actions-cheats/" + (process.env.AWS_ACTIONS_CHEATS_VERSION || "v0.1.3") + "/cheats/{" +
   commas + "} && " +
   chmodx + "'";
   

@@ -16,9 +16,11 @@ jobs:
     env:
       AWS_REGION: us-east-1
       TEST_BUCKET_NAME: aws-actions-cheats-testbucket
-      AWS_ACTIONS_CHEATS_VERSION: fix-urs
+      # AWS_ACTIONS_CHEATS_VERSION: see below
     steps:
       - uses: actions/checkout@v2.3.1
+
+      - run: echo "::set-env name=AWS_ACTIONS_CHEATS_VERSION::${GITHUB_REF##*/}"
 
       - name: running aws-actions-cheats
         uses: ./

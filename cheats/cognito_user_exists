@@ -17,7 +17,7 @@ cognito_user_exists() {
   
   exit_code=$?
 
-  # echo -e "\$\$\$ DEBUG STDALL $stdall"
+  echo -e "[DEBUG] STDALL\n$stdall"
   
   if [[ "$stdall" == *UserNotFoundException* ]]; then
     return 1

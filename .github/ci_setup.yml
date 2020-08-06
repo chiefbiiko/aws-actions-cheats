@@ -10,7 +10,7 @@ Resources:
           PolicyDocument:
             Version: 2012-10-17
             Statement:
-              - Sid: AllowSomeS3Ops
+              - Sid: AllowSomeS3NCognitoOps
                 Effect: Allow
                 Action:
                   - s3:HeadBucket
@@ -18,6 +18,8 @@ Resources:
                   - s3:CreateBucket
                   - s3:PutObject
                   - s3:GetObject
+                  - s3:ListBucket
+                  - cognito-idp:AdminGetUser
                 Resource: "*"
 
   AccessKey:

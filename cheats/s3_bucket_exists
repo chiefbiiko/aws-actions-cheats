@@ -13,6 +13,8 @@ s3_bucket_exists() {
 
   stdall="$(aws s3api head-bucket --bucket="$1" 2>&1)"
   exit_code=$?
+  
+  echo -e "[DEBUG] STDALL\n$stdall"
 
   if [[ "$stdall" == *404* ]]; then
     return 1
