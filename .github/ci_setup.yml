@@ -13,8 +13,8 @@ Resources:
               - Sid: AllowSomeS3NCognitoOps
                 Effect: Allow
                 Action:
-                  - s3:HeadBucket
-                  - s3:HeadObject
+                  - s3api:HeadBucket
+                  - s3api:HeadObject
                   - s3:CreateBucket
                   - s3:PutObject
                   - s3:GetObject
