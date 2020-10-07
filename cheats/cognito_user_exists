@@ -1,13 +1,12 @@
 #!/bin/bash
 
 cognito_user_exists() {
-  # usage: cognito_user_exists $userpool_id $username
   # requires: cognito-idp:AdminGetUser
   if [[ -z "$1" ]] || [[ -z "$2" ]]; then
-    printf "usage: cognito_user_exists \$userpool_id \$username\n"
+    echo "usage: cognito_user_exists \$userpool_id \$username"
     return 1
   elif [[ "$1" =~ -h|--help ]]; then
-    printf "usage: cognito_user_exists \$userpool_id \$username\n"
+    echo "usage: cognito_user_exists \$userpool_id \$username"
     return 0
   fi
   

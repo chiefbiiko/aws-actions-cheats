@@ -1,13 +1,12 @@
 #!/bin/bash
 
 s3_bucket_exists() {
-  # usage: s3_bucket_exists $bucket_name
   # requires: s3:HeadBucket
   if [[ -z "$1" ]]; then
-    printf "usage: s3_bucket_exists \$bucket_name\n"
+    echo "usage: s3_bucket_exists \$bucket_name"
     return 1
   elif [[ "$1" =~ -h|--help ]]; then
-    printf "usage: s3_bucket_exists \$bucket_name\n"
+    echo "usage: s3_bucket_exists \$bucket_name"
     return 0
   fi
 

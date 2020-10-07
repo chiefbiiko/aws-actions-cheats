@@ -1,12 +1,11 @@
-#!/bin/bash -x
+#!/bin/bash
 
 s3_uri() {
-  # usage: s3_uri $bucket_name [$key]
   if [[ -z "$1" ]]; then
-    printf "usage: s3_uri \$bucket_name [\$key]"
+    echo "usage: s3_uri \$bucket_name [\$key]"
     return 1
   elif [[ "$1" =~ -h|--help ]]; then
-    printf "usage: s3_uri \$bucket_name [\$key]"
+    echo "usage: s3_uri \$bucket_name [\$key]"
     return 0
   fi
 
@@ -18,5 +17,5 @@ s3_uri() {
     key="/$2"
   fi
 
-  printf "s3://%s%s" "$1" "$key"
+  echo "s3://$1$key"
 }

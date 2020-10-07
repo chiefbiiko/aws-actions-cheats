@@ -1,27 +1,23 @@
-#!/bin/bash -x
+#!/bin/bash
 
 s3_url() {
-  # usage: s3_url $bucket_name [$key]
   if [[ -z "$1" ]]; then
-    printf "usage: s3_url \$bucket_name [\$key]"
+    echo "usage: s3_url \$bucket_name [\$key]"
     return 1
   elif [[ "$1" =~ -h|--help ]]; then
-    printf "usage: s3_url \$bucket_name [\$key]"
+    echo "usage: s3_url \$bucket_name [\$key]"
     return 0
   fi
   
   echo "[DEBUG] got thru entry ifs"
 
   if [[ -n "$2" ]] && [[ "$2" == /* ]]; then
-    echo "[DEBUG] 1st branch"
     key="$2"
   elif [[ -z "${2// }" ]]; then
-    echo "[DEBUG] 2nd branch"
     key=""
   else
-    echo "[DEBUG] 3rd branch"
     key="/$2"
   fi
 
-  printf "https://%s.s3.amazonaws.com%s" "$1" "$key"
+  echo "https://$1.s3.amazonaws.com$key"
 }
